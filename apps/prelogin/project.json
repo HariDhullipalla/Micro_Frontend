@@ -1,0 +1,88 @@
+{
+  "projectType": "application",
+  "root": "apps/prelogin",
+  "sourceRoot": "apps/prelogin/src",
+  "prefix": "micro-frontend-nx",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/prelogin",
+        "index": "apps/prelogin/src/index.html",
+        "main": "apps/prelogin/src/main.ts",
+        "polyfills": "apps/prelogin/src/polyfills.ts",
+        "tsConfig": "apps/prelogin/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/prelogin/src/favicon.ico", "apps/prelogin/src/assets"],
+        "styles": ["apps/prelogin/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/prelogin/src/environments/environment.ts",
+              "with": "apps/prelogin/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "prelogin:build:production"
+        },
+        "development": {
+          "browserTarget": "prelogin:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "prelogin:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/prelogin/**/*.ts", "apps/prelogin/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/prelogin"],
+      "options": {
+        "jestConfig": "apps/prelogin/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

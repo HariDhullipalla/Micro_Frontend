@@ -1,0 +1,28 @@
+{
+  "root": "apps/prelogin-e2e",
+  "sourceRoot": "apps/prelogin-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/prelogin-e2e/cypress.json",
+        "devServerTarget": "prelogin:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "prelogin:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/prelogin-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["prelogin"]
+}

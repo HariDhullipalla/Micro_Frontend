@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "prelogin": "apps/prelogin",
+    "prelogin-e2e": "apps/prelogin-e2e"
+  }
+}
