@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "post-login": "apps/post-login",
+    "post-login-e2e": "apps/post-login-e2e",
     "prelogin": "apps/prelogin",
     "prelogin-e2e": "apps/prelogin-e2e"
   }
